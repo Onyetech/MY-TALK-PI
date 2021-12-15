@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<link rel="apple-touch-icon" sizes="76x76" href="./assets/img/favicon.ico">
+
+<!-- <link rel="icon" type="image/png" href="./assets/img/favicon.ico"> -->
+<br>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>TalkPi Blog</title>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!-- Main CSS -->
+<link href="./assets/css2/post.css" rel="stylesheet"/>
+</head>
+<body>
+	
+<!--------------------------------------
+NAVBAR
+--------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e8f3ec;">
+	<div class="container">
+		<!--Logo-->
+		<a class="navbar-brand" href="index.html"><img src="assets/img/Onyetechlogo.png" height="40" alt="logo"><b>TalkPi</b></a>
+
+		<!--Mobile Toggle Button-->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+		</button>
+
+		<!--Links-->
+		<div class="collapse navbar-collapse" id="navbarNav" >
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a th:href="@{/}" class="nav-link">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Services</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/profile}"><b><span th:text="*{thisUser.username}"></span></b>
+						<span class="badge badge-secondary">Profile</span></a>
+				</li>
+				<li class="nav-item">
+					<a th:href="@{/blog}" class="nav-link">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a th:href="@{/index}" class="nav-link">Log out</a>
+				</li>
+
+
+				<ul class="navbar-nav ml-auto d-flex align-items-center">
+					<li class="nav-item highlight">
+						<a class="nav-link" th:href="@{/createPost}">Write Blog</a>
+					</li>
+				</ul> &nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="search-box" style="border-radius: 3em; ">
+					<button class="btn-search" style="background-color:  blue;"><i class="fas fa-search"></i></button>
+					<input type="text" class="input-search" placeholder="Type to Search...">
+				</div>
+			</ul>
+
+
+		</div>
+	</div>
+</nav>
+<!--End Navbar-->
+    
+    
+<!--------------------------------------
+HEADER
+--------------------------------------->
+<div class="container">
+	<div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
+		<div class="pl-4 pr-0 h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-6 pt-6 pb-6 align-self-center">
+					<h1 class="secondfont mb-3 font-weight-bold">TalkPi has been a trending platform Pioneers Talk about Pi coin</h1>
+					<p class="mb-3">
+						The First Digital Currency You Can Mine On Your Phone
+						Start earning cryptocurrency today with our free, energy-light mobile app.
+					</p>
+					<a href="https://minepi.com/" class="btn btn-dark">Learn More</a>
+				</div>
+				<div class="col-md-6 d-none d-md-block pr-0" style="background-size:cover;background-image:url(./assets/img/demo/home.jpg);">	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Header -->
+
+	
+
+<!--------------------------------------
+POST FORM
+--------------------------------------->	
+
+<div class="container">
+	<center>
+	<div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
+		<div class="pl-4 pr-0 h-100 tofront" style="max-width:min-content;">
+			<div class="form-div" style="max-width: 600px;">
+				<form class="posting" action="#" th:action="@{/blog}" th:object="${userPost}" method="POST">
+
+
+		<div th:with="error=${session.messageFour}">
+			<div th:if="${error} != null">
+				<div class="alert alert-success" style="background:none; text-align: center; color: red" role="alert">
+					<div th:text = "${error}"></div>
+				</div>
+			</div>
+		</div>
+
+  
+		<select class="classic" name="postCategory" th:field = "*{postCategory}" style="margin-top: 50px; margin-bottom: 1px; width: 600px;">
+<!--			<label th:for="postCategory" th:name="postCategory">Select Post Category:</label>-->
+			<option th:value="cat">Select Post Category:</option>
+		  <option th:value="PiOnly">Pi Only</option>
+		  <option th:value="Crypto">Crypto</option>
+		  <option th:value="Social">Social</option>
+		  <option th:value="Others">Others</option>
+		  </select>
+		
+		  
+		  <input type="text" class="post" style="margin-bottom: 0.1px;" th:field = "*{postTitle}" name="postTitle" placeholder="Post title">
+		  
+		  <textarea type="text" name="postBody" th:field = "*{postBody}" placeholder="Post body" style="height:200px"></textarea>
+		  
+		  <button type="submit" name="submit" class="btn btn_sub p-2" style="background-color: blue; float: right; color:white">SUBMIT POST</button><br><br><br>
+		  </form>
+		</div>
+	
+	</div>
+	</div>
+ </center>
+
+</div>
+
+	
+
+
+<!--------------------------------------
+FOOTER
+--------------------------------------->
+		<!--Start Footer-->
+		<footer id="footer">
+			<div class="container ftr_main">
+				<div class="row">
+					<!--Start Newsletter-->
+					<div class="col-lg-4 col-md-6 align-self-center">
+						<div class="ftr_brand">
+							<a href="#"><img src="assets/img/Onyetechlogo.png" height="40" alt="logo">TalkPi</a>
+						</div>
+						<div class="ftr_intro">
+							<p>Be the first to know the latest trend around Pi crypto World by subscribing to our newsletter!</p>
+						</div>
+						<div class="ftr_nwsltr">
+							<label>Newsletter</label>
+							<form action="#0">
+								<div class="form-group d-flex flex-wrap flex-row">
+								    <input type="email" class="p-2 mr-3" placeholder="Enter your Email">
+								    <button type="submit" class="btn btn_sub p-2" style="background-color: blue;">Subscribe</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--End Newsletter-->
+
+					<!--Start Footer Objectives-->
+					<div class="col-lg-8 col-md-12 ftr_bdy align-self-center">
+						<div class="ftr_cnt ml-3 mr-3 d-flex flex-row justify-content-between flex-wrap">
+							<div class="ftr_clb"  >
+								<span class="ftr_clb_t1">Are you a crypo expert?</span><br/>
+								<span class="ftr_clb_t2">Lets have you work with us as our crypto coach!</span><br/>
+								<a href="#" class="btn button_main-2" style="background-color: blue;">Submit an application!</a>
+						<!--		<div class="ftr_dsc mt-4">Made with <i class="fas fa-heart"></i> by <a href="http://codeonec.co">Codeonec</a></div> -->
+							</div>
+							<div class="ftr_lnk d-flex flex-column"  >
+								<div class="ftr_lnk_sc">
+									<a href="#"><i class="fab fa-twitter"></i></a>
+									<a href="#"><i class="fab fa-facebook-f"></i></a>
+									<a href="#"><i class="fab fa-instagram"></i></a>
+									<a href="#"><i class="fab fa-youtube"></i></a>
+									<a href="#"><i class="fab fa-dribbble"></i></a>
+								</div>
+								<div class="ftr_lnk_cmp mt-4 ml-auto">
+									<span class="ftr_lnk_head">Company</span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Case Studies</a></span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Career</a></span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Jobs</a></span>
+								</div>
+								<div class="ftr_lnk_lpt mt-auto ml-auto">
+									<span class="ftr_lnk_lpt_l"><a href="#">Privacy Policy</a></span><span class="ftr_lnk_lpt_dot">&nbsp;·&nbsp;</span><span class="ftr_lnk_lpt_l"><a href="#">Terms of use</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Start Footer Objectives-->
+				</div>
+			</div>
+
+			<!--Start Copyright-->
+			<section class="ftr_btm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<h6>2021 © <a href="https://talkpi.com/">OnyeTech Creative Hub</a>, All rights reserved.</h6>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--End Copyright-->
+		</footer>
+		<!--End Footer-->
+    
+<!--------------------------------------
+JAVASCRIPTS
+--------------------------------------->
+<script src="./assets/js/vendor/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/functions.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- Title -->
+		<title>TalkPi -Sign Up Page</title>
+
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <!-- SEO Meta description -->
+		<meta name="description"
+		    content="TalkPi - Pi cryptocurrency ecosystem web application">
+		<meta name="author" content="Codeonec">
+
+		<!-- OG Meta Tags to improve the URL looks when you share the link on LinkedIn, Facebook, Google+ -->
+	    <meta property="og:site_name" content=""/> <!-- website name -->
+	    <meta property="og:site" content=""/> <!-- website link -->
+	    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	    <meta property="og:description" content=""/> <!-- description shown in the actual shared post -->
+	    <meta property="og:image" content=""/> <!-- image link, make sure it's jpg -->
+	    <meta property="og:url" content=""/> <!-- where do you want your post to link to -->
+	    <meta property="og:type" content="article"/>
+
+	    <!-- Favicon Icon-->
+		<link rel="icon" href="assets/images/.Onye tech favicon.png" type="image/png" sizes="16x16">
+
+	    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<!-- Main Stylesheet -->
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		<!-- Added Stylesheet -->
+		<link rel="stylesheet" type="text/css" href="assets/css/signup.css">
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.theme.default.min.css">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+		<!-- Font-awesome CSS -->
+		<link href="assets/css/all.min.css" rel="stylesheet">
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+		<!--Start Preloader-->
+		<div id="pre_loader">
+			<div class="pre_cnt d-flex flex-wrap flex-row align-items-center">
+				<span class="pre_spn">
+					<span class="spinner-grow text-primary" role="status">	
+					</span>
+				</span>
+			</div>
+		</div>
+		<!--End Preloader-->
+
+		<!--Start Navbar-->
+			<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+				<div class="container">
+					<!--Logo-->
+					<a class="navbar-brand" href="index.html"><img src="assets/images/Onyetechlogo.png" height="40" alt="logo">TalkPi</a>
+
+					<!--Mobile Toggle Button-->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				   	 	<i class="fas fa-bars"></i>
+				    </button>
+
+					<!--Links-->
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a th:href="@{/}" class="nav-link">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#projects">Blogs</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#contact">Contact us</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/login}" class="nav-link">Log In</a>
+
+							</li>
+							<div class="sign-up-div">
+								<li class="nav-item" id="sign-up-border">
+									<a th:href="@{/signup}" id="sign-up" class="nav-link">Sign Up</a>
+
+								</li>
+							</div>
+						</ul>
+						<div class="search-box" style="border-radius: 3em; ">
+							<button class="btn-search"><i class="fas fa-search"></i></button>
+							<input type="text" class="input-search" placeholder="Type to Search...">
+						</div>
+
+					</div>
+				</div>
+			</nav>
+		<!--End Navbar-->
+
+        <!--Start Content-->
+
+		<!--Start cover-->
+		
+		<section id="cover">
+			<div class="container">
+				<div class="row cover_wrapper">
+					<div  class="col-lg-6 align-self-center">
+						<h1 class="wrapper_head">Sign Up</h1>
+						<h5 class="wrapper_nav"><span><a href="index.html" class="wrapper_nav_link">Home</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span>Sign Up Page</span></h5>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End Cover-->
+
+		<!--Start Project Detail-->
+	<section id="project_detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                
+				<div class="col-lg-12 login-key">
+                    <!-- <i class="fa fa-key" aria-hidden="true"></i> -->
+					<i class="" aria-hidden="true"></i>
+                </div>
+
+
+				<div th:with="error=${session.messageOne}">
+					<div th:if="${error} != null">
+						<div class="alert alert-success" style="background:none; text-align: center; color: red" role="alert">
+							<div th:text = "${error}"></div>
+						</div>
+					</div>
+				</div>
+
+				<div th:with="error=${session.messageTwo}">
+					<div th:if="${error} != null">
+						<div class="alert alert-success" style="background:none; text-align: center; color: red" role="alert">
+							<div th:text = "${error}"></div>
+						</div>
+					</div>
+				</div>
+				<div th:with="error=${session.messageThree}">
+					<div th:if="${error} != null">
+						<div class="alert alert-success" style="background:none; text-align: center; color: red" role="alert">
+							<div th:text = "${error}"></div>
+						</div>
+					</div>
+				</div>
+
+                 <div class="col-lg-12 login-title">
+                    SIGN UP FORM
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+						<!--/*@thymesVar id="saving" type=""*/-->
+						<form action="/registered" method="POST">
+<!--						<form th:action="@{/registered}" th:object="${saving}" method="POST">-->
+							<div class="form-group">
+								<label class="form-control-label">PICK USERNAME</label>
+								<input type="text"  name="username" class="form-control" placeholder="" required>
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">FULL NAMES</label>
+								<input type="text"  name="fullName" class="form-control" placeholder="" required>
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">YOUR EMAIL</label>
+								<input type="email" name="email" class="form-control" placeholder="" required>
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">YOUR PASSWORD</label>
+								<input type="password" name="passwordOne" class="form-control" placeholder="" required>
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">CONFIRM PASSWORD</label>
+								<input type="password" name="passwordTwo" class="form-control" placeholder="" required>
+							</div>
+
+							<div class="col-lg-12 loginbttm">
+								<div class="col-lg-6 login-btm login-text">
+									<!-- Error Message -->
+								</div>
+								<div class="col-lg-6 login-btm login-button">
+									<button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+								</div>
+							</div>
+						</form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div><br><br><br><br>
+
+
+
+
+
+
+
+
+			</div>
+		</section>
+        <!--End Project Detail-->
+        
+        <!-- Start Project Section-->
+		<!-- <section id="projects" class="pd_project">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12 cnt_head">
+						<span class="sub_head">Some of the projects by us</span>
+						<h2 class="s_head">Related Projects</h2>
+						<p class="h_body">We provide best ever services for your great experience. We make all efforts for the revolutionary change.</p>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="owl-carousel owl-theme pr_cnt">
+							<div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p3.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">AI/VR Project</div>
+						    			<div class="pr_head">Grade VR</div>	
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>						    		
+						    		</div>
+						    	</div>
+						    </div>
+							<div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p6.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">Web Development</div>
+						    			<div class="pr_head">ExO Net</div>	
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>
+						    		</div>
+						    	</div>
+						    </div>
+						    <div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p1.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">Gaming & Utility</div>
+						    			<div class="pr_head">BaseXamp</div>
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>
+						    		</div>
+						    	</div>
+						    </div>
+						    <div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p2.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">Computing Research</div>
+						    			<div class="pr_head">Right Wireframes</div>
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>						    		
+						    		</div>
+						    	</div>
+						    </div>
+						    <div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p4.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">AI Development</div>
+						    			<div class="pr_head">Dynamic Media</div>
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>						    		
+						    		</div>
+						    	</div>
+						    </div>
+						    <div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p5.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">Python Project</div>
+						    			<div class="pr_head">Ultimate PY</div>	
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>
+						    		</div>
+						    	</div>
+						    </div>
+						    <div class="item" style="background:linear-gradient(0deg,rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(assets/images/projects/p6.jpg); background-size: cover; background-position: center; width: 320px;">
+						    	<div class="pr_obj">
+						    		<div class="p-3 pr_main">
+						    			<div class="pr_subhead">Web Development</div>
+						    			<div class="pr_head">ExO Net</div>	
+						    			<div class="pr_lnk"><a href="project_single.html" class="button_main">Case Study&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-right arrow_go"></i></a></div>
+						    		</div>
+						    	</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> -->
+		<!--End Project Section -->
+
+        <!--End Content-->
+
+        <!--Start Footer-->
+		<footer id="footer">
+			<div class="container ftr_main">
+				<div class="row">
+					<!--Start Newsletter-->
+					<div class="col-lg-4 col-md-6 align-self-center">
+						<div class="ftr_brand">
+							<a href="#"><img src="assets/images/Onyetechlogo.png" height="40" alt="logo">TalkPi</a>
+						</div>
+						<div class="ftr_intro">
+							<p>Be the first to know the latest trend around Pi crypto World by subscribing to our newsletter!</p>
+						</div>
+						<div class="ftr_nwsltr">
+							<label>Newsletter</label>
+							<form action="#0">
+								<div class="form-group d-flex flex-wrap flex-row">
+								    <input type="email" class="p-2 mr-3" placeholder="Enter your Email">
+								    <button type="submit" class="btn btn_sub p-2">Subscribe</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--End Newsletter-->
+
+					<!--Start Footer Objectives-->
+					<div class="col-lg-8 col-md-12 ftr_bdy align-self-center">
+						<div class="ftr_cnt ml-3 mr-3 d-flex flex-row justify-content-between flex-wrap">
+							<div class="ftr_clb"  >
+								<span class="ftr_clb_t1">Are you a crypo expert?</span><br/>
+								<span class="ftr_clb_t2">Lets have you work with us!</span><br/>
+								<a href="#" class="btn button_main">Submit an application!</a>
+						<!--		<div class="ftr_dsc mt-4">Made with <i class="fas fa-heart"></i> by <a href="http://codeonec.co">Codeonec</a></div> -->
+							</div>
+							<div class="ftr_lnk d-flex flex-column"  >
+								<div class="ftr_lnk_sc">
+									<a href="#"><i class="fab fa-twitter"></i></a>
+									<a href="#"><i class="fab fa-facebook-f"></i></a>
+									<a href="#"><i class="fab fa-instagram"></i></a>
+									<a href="#"><i class="fab fa-youtube"></i></a>
+									<a href="#"><i class="fab fa-dribbble"></i></a>
+								</div>
+								<div class="ftr_lnk_cmp mt-4 ml-auto">
+									<span class="ftr_lnk_head">Company</span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Case Studies</a></span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Career</a></span><br/>
+									<span class="ftr_lnk_bdy"><a href="#">Jobs</a></span>
+								</div>
+								<div class="ftr_lnk_lpt mt-auto ml-auto">
+									<span class="ftr_lnk_lpt_l"><a href="#">Privacy Policy</a></span><span class="ftr_lnk_lpt_dot">&nbsp;·&nbsp;</span><span class="ftr_lnk_lpt_l"><a href="#">Terms of use</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Start Footer Objectives-->
+				</div>
+			</div>
+
+			<!--Start Copyright-->
+			<section class="ftr_btm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<h6>2021 © <a href="https://talkpi.com/">OnyeTech Creative Hub</a>, All rights reserved.</h6>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--End Copyright-->
+		</footer>
+		<!--End Footer-->
+
+		<!-- JavaScript Files -->
+		<!-- Plugins JS(1.jQuery, 2.Popper, 3.Bootstrap, 4.FontAwesome, 6.Waypoints, 7.Owl Carousel) -->
+		<script src="assets/script/plugins.js"></script>
+		<!-- Main JS file -->
+		<script src="assets/script/main.js"></script>
+	</body>
+</html>

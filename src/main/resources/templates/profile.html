@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<p>Welcome Home</p>
+
+<div>
+
+    <h4 th:text="*{thisUser.username}"></h4>
+    <h4 th:text="*{thisUser.fullName}"></h4>
+
+
+</div>
+
+</body>
+</html>
