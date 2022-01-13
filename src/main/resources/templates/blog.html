@@ -99,28 +99,72 @@ HEADER
 MAIN
 --------------------------------------->
     
-<div class="container pt-4 pb-4">
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="card border-0 mb-4 box-shadow h-xl-300">              
-                <div style="background-image: url(./assets/img/demo/1.jpg); height: 150px;    background-size: cover;    background-repeat: no-repeat;"></div>               
-				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-					<h2 class="h4 font-weight-bold">
-					<a class="text-dark" href="./article.html">Use of Pi crypto has been adopted in China</a>
-					</h2>
-					<p class="card-text">
-						We don’t normally write about B2C topics but we make an exception in case of topics where we looked for answers and couldn’t easily find them. 
-						And this is an investment related topic so please read this claimer.
+<!--<div class="container pt-4 pb-4">-->
+<!--	<div class="row">-->
+<!--		<div class="col-lg-6">-->
+<!--			<div class="card border-0 mb-4 box-shadow h-xl-300">              -->
+<!--                <div style="background-image: url(./assets/img/demo/1.jpg); height: 150px;    background-size: cover;    background-repeat: no-repeat;"></div>               -->
+<!--				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">-->
+<!--					<h2 class="h4 font-weight-bold">-->
+<!--					<a class="text-dark" href="./article.html">Use of Pi crypto has been adopted in China</a>-->
+<!--					</h2>-->
+<!--					<p class="card-text">-->
+<!--						We don’t normally write about B2C topics but we make an exception in case of topics where we looked for answers and couldn’t easily find them. -->
+<!--						And this is an investment related topic so please read this claimer.-->
 
 
-					</p>
-					<div>
-						<small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>
-						<small class="text-muted">Dec 12 &middot; 5 min read</small>
+<!--					</p>-->
+<!--					<div>-->
+<!--						<small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>-->
+<!--						<small class="text-muted">Dec 12 &middot; 5 min read</small>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--for my auto posts-->
+
+		<div class="container pt-4 pb-4" >
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="card border-0 mb-4 box-shadow h-xl-300"  th:each="postInfo : ${allPosts}">
+						<div style="background-image: url(./assets/img/demo/1.jpg); height: 150px;    background-size: cover;    background-repeat: no-repeat;" ></div>
+
+
+						<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+							<h2 class="h4 font-weight-bold">
+								<a class="text-dark" href="./article.html"> <span th:text="${postInfo.postTitle}"></span></a>
+							</h2>
+
+							<p>
+								<b>Category:&nbsp;</b></b><small><span class="badge badge-secondary" style="background-color: #653d8a" th:text="${postInfo.postCategory}"> </span></small>
+							</p>
+							<p class="card-text">
+								<span th:text="${postInfo.postBody}"></span>
+
+
+							</p>
+<!--							<div>-->
+<!--								<small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>-->
+<!--								<small class="text-muted">Dec 12 &middot; 5 min read</small>-->
+<!--							</div>-->
+
+								<small class="d-block"><a class="text-muted" href="#"> <b><span th:text="${postInfo.getUser().username}"></span></b></a></small>
+
+								<div style="display: flex"><div><small class="text-muted"> <span th:text="${postInfo.getPostDate()}"></span></small></div>
+
+									<div style="margin-left: 20px"><small><span class="badge badge-secondary" style="background-color: lawngreen"> Update</span></small>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><span class="badge badge-secondary" style="background-color: orangered"> Delete</span></small>
+
+									</div></div>
+
+
+
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+
+
 		<div class="col-lg-6">
 			<div class="flex-md-row mb-4 box-shadow h-xl-300">
 				<div class="mb-3 d-flex align-items-center">

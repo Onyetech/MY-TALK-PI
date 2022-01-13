@@ -12,26 +12,26 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class DashBoardController {
 
-    @GetMapping("/dashboard")
+    @GetMapping("/profile")
     public String showDashBoardForm(Model model) {
         model.addAttribute("userDashBoard", new Users());
         System.out.println("showDashBoardForm is working now");
         return "profile";
     }
 
-    @PostMapping("/dashboard")
-    public String getDashBoard(Model model, HttpServletRequest request) {
-
-        HttpSession session = request.getSession();
-        Users users = (Users) session.getAttribute("user");
-
-        System.out.println(users);
-        model.addAttribute("thisUser", users);
-
-        model.addAttribute("dashBoard", new Users());
-
-        System.out.println("myDashBoard is working now");
-
-        return "profile";
-    }
+//    @PostMapping("/dashboard")
+//    public String getDashBoard(Model model, HttpServletRequest request) {
+//
+//        HttpSession session = request.getSession();
+//        Users users = (Users) session.getAttribute("user");
+//
+//        System.out.println(users);
+//        model.addAttribute("thisUser", users);
+//
+//        model.addAttribute("dashBoard", new Users());
+//
+//        System.out.println("myDashBoard is working now");
+//
+//        return "profile";
+//    }
 }

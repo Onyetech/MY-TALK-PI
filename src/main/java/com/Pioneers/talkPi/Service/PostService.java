@@ -13,9 +13,10 @@ public interface PostService {
 
     void savePost(Post post);
     Optional<Post> getPostById(Long postId);
-    Post getPostByUserId(Long user_id);
+    String getPostByUserId(Long user_id);
     Post getPostByPostTitle(String postTitle);
     Post getPostByPostBody(String postBody);
+
 
 
 }

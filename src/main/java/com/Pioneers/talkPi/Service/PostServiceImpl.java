@@ -5,6 +5,7 @@ import com.Pioneers.talkPi.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,8 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAllPost() {
-        return null;
+//        Collections.reverse(getAllPost());
+        return postRepository.findAll();
     }
 
     @Override
@@ -31,7 +33,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post getPostByUserId(Long user_id) {
+    public String getPostByUserId(Long user_id) {
         return postRepository.findPostByUserId(user_id);
     }
 
@@ -44,4 +46,12 @@ public class PostServiceImpl implements PostService {
     public Post getPostByPostBody(String postBody) {
         return postRepository.findPostByPostBody(postBody);
     }
+
+
+//    public List<Post> getAllPost(){
+//        List<Post> posts = postRepository.findAll(); //solution
+//        Collections.reverse(posts);
+//        return posts;
+//    }
+
 }

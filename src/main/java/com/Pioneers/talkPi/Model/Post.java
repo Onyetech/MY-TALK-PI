@@ -21,7 +21,7 @@ public class Post {
     private Long postId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private Users user;
 
     @Column(nullable = false)
@@ -34,8 +34,8 @@ public class Post {
     private String postBody;
 
     @Temporal(TemporalType.TIME)
-    @Column(nullable = false, length = 50)
-    private Date postDate;
+    @Column(length = 50)
+    private Date postDate = new Date();
 
 
 }

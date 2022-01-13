@@ -66,10 +66,12 @@ public class UsersServiceImpl implements UsersService{
         return findUserByPasswordOne(users.getPasswordOne());
     }
 
+    @Override
     public String findUserByEMail(String email){
        return users.getEmail();
     }
 
+    @Override
     public String findUserByPasswordOne(String passwordOne){
         return users.getPasswordOne();
     }
@@ -82,6 +84,7 @@ public class UsersServiceImpl implements UsersService{
         return users.getUsername();
     }
 
+   @Override
     public Users authUserLogin(String email, String password) {
         return usersRepository.findByEmailAndPasswordOne(email, password).orElse(null);
     }

@@ -1,7 +1,10 @@
 package com.Pioneers.talkPi.Controller;
 
+import com.Pioneers.talkPi.Model.Post;
 import com.Pioneers.talkPi.Model.Users;
+import com.Pioneers.talkPi.Repository.PostRepository;
 import com.Pioneers.talkPi.Repository.UsersRepository;
+import com.Pioneers.talkPi.Service.PostService;
 import com.Pioneers.talkPi.Service.UsersService;
 import com.Pioneers.talkPi.Service.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +16,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class LoginController {
 
-    private UsersServiceImpl usersServiceImpl;
-    private UsersRepository usersRepository;
     private UsersService usersService;
+    private PostRepository postRepository;
+    private UsersRepository usersRepository;
     private Users users;
+    private  PostService postService;
 
     public LoginController(Users users) {
         this.users = users;
     }
 
     @Autowired
-    public LoginController(UsersService usersService, UsersRepository usersRepository,
-    UsersServiceImpl usersServiceImpl) {
+    public LoginController(UsersRepository usersRepository,
+                           UsersService usersService, PostRepository postRepository, PostService postService) {
 
-        this.usersService = usersService;
         this.usersRepository = usersRepository;
-        this.usersServiceImpl = usersServiceImpl;
+        this.usersService = usersService;
+        this.postRepository = postRepository;
+        this.postService = postService;
     }
 
 
@@ -50,16 +57,19 @@ public class LoginController {
                                HttpSession session, HttpServletRequest request) {
 
         session = request.getSession();
-        Users authenticated = usersServiceImpl.authUserLogin(users.getEmail(), users.getPasswordOne());
+        Users authenticatedUser = usersService.authUserLogin(users.getEmail(), users.getPasswordOne());
 
-        if (authenticated != null)
+        if (authenticatedUser != null)
             {
-            session.setAttribute("user", authenticated);
+            session.setAttribute("user", authenticatedUser);
 
             System.out.println(users);
 
-            model.addAttribute("thisUser", authenticated);
+            model.addAttribute("thisUser", authenticatedUser);
 
+                List<Post> allPosts = postService.getAllPost();
+                Collections.reverse(allPosts);
+                model.addAttribute("allPosts", allPosts);
             return "blog";
             }
 

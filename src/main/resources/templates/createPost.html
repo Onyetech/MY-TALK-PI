@@ -42,14 +42,14 @@ NAVBAR
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" th:href="@{/profile}"><b><span th:text="*{thisUser.username}"></span></b>
+					<a class="nav-link" th:href="@{/profile}"><b><span th:text="*{thisUser.getUsername()}"></span></b>
 						<span class="badge badge-secondary">Profile</span></a>
 				</li>
 				<li class="nav-item">
 					<a th:href="@{/blog}" class="nav-link">Blog</a>
 				</li>
 				<li class="nav-item">
-					<a th:href="@{/index}" class="nav-link">Log out</a>
+					<a th:href="@{/}" class="nav-link">Log out</a>
 				</li>
 
 
@@ -116,19 +116,19 @@ POST FORM
 		</div>
 
   
-		<select class="classic" name="postCategory" th:field = "*{postCategory}" style="margin-top: 50px; margin-bottom: 1px; width: 600px;">
-<!--			<label th:for="postCategory" th:name="postCategory">Select Post Category:</label>-->
+		<select class="classic" name="postCategory" th:field = "*{postCategory}" style="margin-top: 50px; margin-bottom: 1px; width: 600px;" required>
+			<label th:for="postCategory" th:name="postCategory">Select Post Category:</label>
 			<option th:value="cat">Select Post Category:</option>
-		  <option th:value="PiOnly">Pi Only</option>
-		  <option th:value="Crypto">Crypto</option>
-		  <option th:value="Social">Social</option>
-		  <option th:value="Others">Others</option>
-		  </select>
+		    <option th:value="PiOnly">Pi Only</option>
+		    <option th:value="Crypto">Crypto</option>
+		    <option th:value="Social">Social</option>
+		    <option th:value="Others">Others</option>
+		</select>
 		
 		  
-		  <input type="text" class="post" style="margin-bottom: 0.1px;" th:field = "*{postTitle}" name="postTitle" placeholder="Post title">
+		  <input type="text" class="post" style="margin-bottom: 0.1px;" th:field = "*{postTitle}" name="postTitle" placeholder="Post title" required>
 		  
-		  <textarea type="text" name="postBody" th:field = "*{postBody}" placeholder="Post body" style="height:200px"></textarea>
+		  <textarea type="text" name="postBody" th:field = "*{postBody}" placeholder="Post body" style="height:200px" required></textarea>
 		  
 		  <button type="submit" name="submit" class="btn btn_sub p-2" style="background-color: blue; float: right; color:white">SUBMIT POST</button><br><br><br>
 		  </form>
