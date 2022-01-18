@@ -6,7 +6,6 @@ import com.Pioneers.talkPi.Repository.PostRepository;
 import com.Pioneers.talkPi.Repository.UsersRepository;
 import com.Pioneers.talkPi.Service.PostService;
 import com.Pioneers.talkPi.Service.UsersService;
-import com.Pioneers.talkPi.Service.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +32,7 @@ public class LoginController {
     }
 
     @Autowired
-    public LoginController(UsersRepository usersRepository,
+    public LoginController (UsersRepository usersRepository,
                            UsersService usersService, PostRepository postRepository, PostService postService) {
 
         this.usersRepository = usersRepository;
@@ -67,9 +66,13 @@ public class LoginController {
 
             model.addAttribute("thisUser", authenticatedUser);
 
+//                Users users = (Users) session.getAttribute("user");
+
                 List<Post> allPosts = postService.getAllPost();
-                Collections.reverse(allPosts);
+                Collections.reverse(postService.getAllPost());
                 model.addAttribute("allPosts", allPosts);
+//                session.getAttribute("users");
+
             return "blog";
             }
 

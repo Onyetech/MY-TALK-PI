@@ -61,14 +61,14 @@ public class PostController {
     public String submitPost(@ModelAttribute("userPost") Post post, Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
 
-        Users loggedInUser = (Users) session.getAttribute("user");
+            Users loggedInUser = (Users) session.getAttribute("user");
 
             System.out.println(post);
 
 
             model.addAttribute("user1", new Users());
             model.addAttribute("allPosts", postService.getAllPost());
-//            Collections.reverse(postService.getAllPost());
+
 
             model.addAttribute("thisUser", loggedInUser);
 
@@ -76,9 +76,6 @@ public class PostController {
 
             postService.savePost(post);
             postService.getAllPost();
-
-//            List<Post> allPosts = postService.getAllPost();
-//            Collections.reverse(allPosts);
 
 
             return "/blog";
